@@ -39,7 +39,7 @@ pipeline {
                  def uploadSpec = """{
                     "files": [{
                        "pattern": "target/*.gz",
-                       "target": "artifactory-build-info/"
+                       "target": "libs-release/"
                     }]
                  }"""
 
