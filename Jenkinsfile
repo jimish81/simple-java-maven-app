@@ -32,6 +32,22 @@ pipeline {
        sh 'java -jar target/my-app-1.0-SNAPSHOT.jar'
       }
       }
+         stage('upload') {
+           steps {
+              script { 
+                 def server = Artifactory.server 'Art1'
+                 def uploadSpec = """{
+                    "files": [{
+                       "pattern": "target/*.jar",
+                       "target": "artifactory-build-info/"
+                    }]
+                 }"""
+
+                 server.upload(uploadSpec) 
+               }
+            }
+        }
+      
      }
     }
      
