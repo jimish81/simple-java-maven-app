@@ -28,27 +28,15 @@ pipeline {
          stage ('Deploy')
        {
       steps
-      {
+       {
        sh 'java -jar target/my-app-1.0-SNAPSHOT.jar'
+       }
+       }
+      stage ('Upload') 
+            {
+            sh 'curl -X PUT -u u:p -T Maven-Upload-1.1.jar "http://54.71.49.80:8081/artifactory/libs-release/my-app-1.0-SNAPSHOT.jar"'   
+            }  
       }
-      }
-         stage('upload') {
-           steps {
-              script { 
-                 def server = Artifactory.server 'Art1'
-                 def uploadSpec = """{
-                    "files": [{
-                       "pattern": "target/*.gz",
-                       "target": "libs-release/"
-                    }]
-                 }"""
-
-                 server.upload(uploadSpec) 
-               }
-            }
-        }
-      
-     }
-    }
+  }
      
       
