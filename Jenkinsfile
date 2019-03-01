@@ -17,7 +17,7 @@ pipeline {
        {
       steps
       {
-       sh 'java -jar target/sample-app-1.0-SNAPSHOT.jar'
+       sh 'java -jar target/my-app-1.0-SNAPSHOT.jar'
       }
       }
      }
