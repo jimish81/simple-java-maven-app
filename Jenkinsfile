@@ -26,7 +26,7 @@ pipeline {
    }
   }
   stage('Publish') {
-   Steps {
+   steps {
     sh 'curl -X PUT -u jimish:28326323 -T Maven-Upload-1.1.jar "http://54.71.49.80:8081/artifactory/libs-release/my-app-1.0-SNAPSHOT.jar"'
    }
   }
